@@ -12,6 +12,10 @@ website:
         text: Courses
       - file: Projectsland.qmd
         text: Projects
+      - text: Maps
+        menu: 
+          - us_states.qmd
+          - wisconsin_districts.qmd
 
 page-footer:
     left: |
