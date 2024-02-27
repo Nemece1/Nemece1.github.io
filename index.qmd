@@ -1,0 +1,41 @@
+---
+title: "Lance Nemecek"
+about:
+  id: intro-heading
+  template: trestles
+  image: Images/profilepicture.jpg
+  image-shape: round
+  links:
+    - icon: envelope
+      href: mailto:nemece1@stolaf.edu
+    - icon: github
+      href: https://github.com/Nemece1
+---
+
+::: {#intro-heading}
+## Lance Nemecek
+
+Student of Mathematics Data Science <br> [MSCS Department](https://wp.stolaf.edu/mscs/) \@ [St. Olaf College](https://wp.stolaf.edu/)
+
+### Education
+
+High school Degree \| Mound Westonka High School
+
+BA in Math with Statistics concentration<br> 2026 \| St. Olaf College
+
+### Work experience
+
+Server \| Woodhill Country Club
+
+Metal Fabricator \| Industrial Louvers
+
+Food Expoditor \| Maynards Restaurant
+:::
+
+### Get in Touch
+
+**Email**: <a href='mailto:nemece1@stolaf.edu'>Nemece1 at stolaf.edu</a>
+
+**Address**: 1520 St. Olaf Ave, Northfield, MN 55057
+
+**Phone**: 612-900-50..
