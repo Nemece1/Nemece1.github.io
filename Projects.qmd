@@ -1,15 +1,14 @@
 ---
-title: "Stats and Data Science Projects"
-listing:
-  contents: projects
-  sort: "title desc"
-  type: grid
-  categories: true
-  sort-ui: true
-  filter-ui: true
-page-layout: full
-comments: false
+title: "Understanding Medications: Uncovering Side Effects"
+description: "Lance Nemecek and Jackson Marsh"
+image: images/MedicationsPic.jpg
+categories:
+  - Medicine
+  - Data Science
+about:
+  template: solana
 ---
 
-The past year and a half I have been studying the essential skills in R such as Data visualization, tidying, transformation. Over this time I have practiced my coding skills using joins, factors, strings and other workflow basics. In the fall of 2023 Jackson Marsh and I conducted a study on the side effects of popular prescription drugs and the cautions of drug interactions. 
+This is [Understanding Medications: Uncovering Side Effects.](https://r.stolaf.edu/s/54e5b412ef72e5dee1eb2/?view=rmarkdown)\
 
+The past year and a half I have been studying the essential skills in R such as Data visualization, tidying, transformation. Over this time I have practiced my coding skills using joins, factors, strings and other workflow basics. In the fall of 2023 Jackson Marsh and I conducted a study on the side effects of popular prescription drugs and the cautions of drug interactions.

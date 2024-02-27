@@ -6,10 +6,12 @@ website:
   title: "Lance Nemecek"
   navbar:
     left:
-      - href: index.qmd
+      - file: index.qmd
         text: Home
-      - about.qmd
-      - Projects.qmd
+      - file: about.qmd
+        text: Courses
+      - file: Projectsland.qmd
+        text: Projects
 
 page-footer:
     left: |

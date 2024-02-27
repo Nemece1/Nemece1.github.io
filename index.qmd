@@ -4,7 +4,6 @@ about:
   id: intro-heading
   template: trestles
   image: Images/profilepicture.jpg
-  image-shape: round
   links:
     - icon: envelope
       href: mailto:nemece1@stolaf.edu

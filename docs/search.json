@@ -2,16 +2,16 @@
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About",
+    "title": "Courses at St. Olaf College",
     "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "text": "I have taken the following MSCS courses during my time at St. Olaf College\n\nCalculus 2:\n\nTechniques of integration including substitution, integration by parts, and partial fractions.\nApplications of integration such as finding areas, volumes, and arc lengths.\nSequences and series including convergence tests and Taylor series.\n\nCalculus 3:\n\nMultivariable calculus including partial derivatives, multiple integrals, and line integrals.\nVector calculus concepts like gradients, divergence, and curl.\nApplications such as optimization problems and parametric surfaces.\n\nProbability Theory:\n\nFundamentals of probability including probability spaces, random variables, and probability distributions.\nProbability rules like Bayes’ theorem and the law of total probability.\nBasic concepts of statistics including expected value, variance, and probability distributions.\n\nLinear Algebra:\n\nVector spaces, subspaces, and linear transformations.\nMatrix operations including addition, multiplication, and inverses.\nEigenvalues and eigenvectors, diagonalization, and applications such as solving systems of linear equations.\n\nData Science 1:\n\nIntroduction to R programming language and RStudio environment for data analysis.\nPrinciples of data tidying and manipulation using tools like the tidyverse package.\nBuilding personal data analysis projects from data acquisition and cleaning to visualization and interpretation.\n\nData Science 2:\n\nIn progress\n\nStatistics 1:\n\nDescriptive statistics including measures of central tendency and dispersion.\nProbability distributions and their properties.\nStatistical inference including hypothesis testing and confidence intervals."
   },
   {
     "objectID": "Projects.html",
     "href": "Projects.html",
-    "title": "Stats and Data Science Projects",
+    "title": "Understanding Medications: Uncovering Side Effects",
     "section": "",
-    "text": "The past year and a half I have been studying the essential skills in R such as Data visualization, tidying, transformation. Over this time I have practiced my coding skills using joins, factors, strings and other workflow basics. In the fall of 2023 Jackson Marsh and I conducted a study on the side effects of popular prescription drugs and the cautions of drug interactions.\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\n\nNo matching items"
+    "text": "This is Understanding Medications: Uncovering Side Effects.\n\nThe past year and a half I have been studying the essential skills in R such as Data visualization, tidying, transformation. Over this time I have practiced my coding skills using joins, factors, strings and other workflow basics. In the fall of 2023 Jackson Marsh and I conducted a study on the side effects of popular prescription drugs and the cautions of drug interactions."
   },
   {
     "objectID": "index.html",
@@ -26,5 +26,12 @@
     "title": "Lance Nemecek",
     "section": "",
     "text": "Student of Mathematics Data Science  MSCS Department @ St. Olaf College\n\n\nHigh school Degree | Mound Westonka High School\nBA in Math with Statistics concentration 2026 | St. Olaf College\n\n\n\nServer | Woodhill Country Club\nMetal Fabricator | Industrial Louvers\nFood Expoditor | Maynards Restaurant"
+  },
+  {
+    "objectID": "Projectsland.html",
+    "href": "Projectsland.html",
+    "title": "Projects",
+    "section": "",
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nUnderstanding Medications: Uncovering Side Effects\n\n\n\nMedicine\n\n\nData Science\n\n\n\nLance Nemecek and Jackson Marsh\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   }
 ]

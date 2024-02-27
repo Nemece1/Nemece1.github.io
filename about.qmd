@@ -1,9 +1,38 @@
 ---
-title: "About"
+title: "Courses at St. Olaf College"
 ---
+**I have taken the following MSCS courses during my time at St. Olaf College**
+    
+  
+- Calculus 2:
+  - Techniques of integration including substitution, integration by parts, and partial fractions.
+  - Applications of integration such as finding areas, volumes, and arc lengths.
+  - Sequences and series including convergence tests and Taylor series.
 
-About this site
+- Calculus 3:
+  - Multivariable calculus including partial derivatives, multiple integrals, and line integrals.
+  - Vector calculus concepts like gradients, divergence, and curl.
+  - Applications such as optimization problems and parametric surfaces.
 
-```{r}
-1 + 1
-```
+- Probability Theory:
+  - Fundamentals of probability including probability spaces, random variables, and probability distributions.
+  - Probability rules like Bayes' theorem and the law of total probability.
+  - Basic concepts of statistics including expected value, variance, and probability distributions.
+
+- Linear Algebra:
+  - Vector spaces, subspaces, and linear transformations.
+  - Matrix operations including addition, multiplication, and inverses.
+  - Eigenvalues and eigenvectors, diagonalization, and applications such as solving systems of linear equations.
+
+- Data Science 1:
+  - Introduction to R programming language and RStudio environment for data analysis.
+  - Principles of data tidying and manipulation using tools like the tidyverse package.
+  - Building personal data analysis projects from data acquisition and cleaning to visualization and interpretation.
+
+- Data Science 2:
+  - In progress
+
+- Statistics 1:
+  - Descriptive statistics including measures of central tendency and dispersion.
+  - Probability distributions and their properties.
+  - Statistical inference including hypothesis testing and confidence intervals.
