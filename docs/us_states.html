@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Lance Nemecek - Wisconsin</title>
+<title>Lance Nemecek - Geospatial Maping of Obesity In The United States</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -134,11 +100,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="dropdown-menu" aria-labelledby="nav-menu-maps">    
         <li>
     <a class="dropdown-item" href="./us_states.html" rel="" target="">
- <span class="dropdown-text">Wisconsin</span></a>
+ <span class="dropdown-text">Geospatial Maping of Obesity In The United States</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./wisconsin_districts.html" rel="" target="">
- <span class="dropdown-text">Mapping</span></a>
+ <span class="dropdown-text">Congressional Districs of Wisconsin</span></a>
   </li>  
     </ul>
   </li>
@@ -161,7 +127,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Wisconsin</h1>
+<h1 class="title">Geospatial Maping of Obesity In The United States</h1>
 </div>
 
 
@@ -176,22 +142,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>My dataset comprises national obesity percentages categorized by state. The “Obesity” field attribute denotes the percentage of each state’s population classified as obese, based on the 2015 CDC BRFSS Survey. The dataset is structured as a tibble with five columns, including an object ID, “NAME,” “obesity,” “shape_area,” and “shape_length.” For this analysis, I focused solely on the obesity percentages. The dataset I’m joining with provides latitude and longitude coordinates for each state. To merge the obesity percentages with their corresponding latitude and longitude coordinates, I performed a right join. It’s necessary to convert the state names to lowercase using the <em>str_to_lower</em> function because they are capitalized in the “StateObesity” tibble but are lowercase in the “us_states” tibble, ensuring accurate matching between the datasets.</p>
+<p>My dataset comprises national obesity percentages categorized by state. The “Obesity” field attribute denotes the percentage of each state’s population classified as obese, based on the 2015 CDC BRFSS Survey. For this analysis, I focused on obesity percentages. The dataset I’m joining with provides latitude and longitude coordinates for each state. To merge the obesity percentages with their corresponding latitude and longitude coordinates, I performed a right join. It’s necessary to convert the state names to lowercase using the <em>str_to_lower</em> function because they are capitalized in the “StateObesity” tibble but are lowercase in the “us_states” tibble, ensuring accurate matching between the datasets.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>StateObesity <span class="sc">|&gt;</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">NAME =</span> <span class="fu">str_squish</span>(<span class="fu">str_to_lower</span>(<span class="fu">as.character</span>(NAME)))) <span class="sc">|&gt;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(NAME, Obesity) <span class="sc">|&gt;</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">right_join</span>(us_states, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"NAME"</span> <span class="ot">=</span> <span class="st">"region"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> long, <span class="at">y =</span> lat,</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                          <span class="at">group =</span> group)) <span class="sc">+</span> </span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_polygon</span>(<span class="fu">aes</span>(<span class="at">fill =</span> Obesity), <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Obesity Rates by State"</span>,</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Longitude"</span>,</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Latitude"</span>,</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"Obesity Rate"</span>)<span class="sc">+</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>() <span class="sc">+</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="us_states_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
 </div>

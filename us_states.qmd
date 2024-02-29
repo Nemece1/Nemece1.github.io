@@ -1,5 +1,5 @@
 ---
-title: "Wisconsin"
+title: "Geospatial Maping of Obesity In The United States"
 ---
 ```{r, include = FALSE}
 library(ggplot2)
@@ -17,9 +17,9 @@ us_states <- map_data("state")
 ```
 
 
-My dataset comprises national obesity percentages categorized by state. The "Obesity" field attribute denotes the percentage of each state's population classified as obese, based on the 2015 CDC BRFSS Survey. The dataset is structured as a tibble with five columns, including an object ID, "NAME," "obesity," "shape_area," and "shape_length." For this analysis, I focused solely on the obesity percentages. The dataset I'm joining with provides latitude and longitude coordinates for each state. To merge the obesity percentages with their corresponding latitude and longitude coordinates, I performed a right join. It's necessary to convert the state names to lowercase using the *str_to_lower* function because they are capitalized in the "StateObesity" tibble but are lowercase in the "us_states" tibble, ensuring accurate matching between the datasets.
+My dataset comprises national obesity percentages categorized by state. The "Obesity" field attribute denotes the percentage of each state's population classified as obese, based on the 2015 CDC BRFSS Survey. For this analysis, I focused on obesity percentages. The dataset I'm joining with provides latitude and longitude coordinates for each state. To merge the obesity percentages with their corresponding latitude and longitude coordinates, I performed a right join. It's necessary to convert the state names to lowercase using the *str_to_lower* function because they are capitalized in the "StateObesity" tibble but are lowercase in the "us_states" tibble, ensuring accurate matching between the datasets.
 
-```{r}
+```{r, echo = FALSE}
 StateObesity |>
   mutate(NAME = str_squish(str_to_lower(as.character(NAME)))) |>
   select(NAME, Obesity) |>

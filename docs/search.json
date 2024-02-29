@@ -1,31 +1,17 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "Courses at St. Olaf College",
+    "objectID": "wisconsin_districts.html",
+    "href": "wisconsin_districts.html",
+    "title": "Congressional Districs of Wisconsin",
     "section": "",
-    "text": "I have taken the following MSCS courses during my time at St. Olaf College\n\nCalculus 2:\n\nTechniques of integration including substitution, integration by parts, and partial fractions.\nApplications of integration such as finding areas, volumes, and arc lengths.\nSequences and series including convergence tests and Taylor series.\n\nCalculus 3:\n\nMultivariable calculus including partial derivatives, multiple integrals, and line integrals.\nVector calculus concepts like gradients, divergence, and curl.\nApplications such as optimization problems and parametric surfaces.\n\nProbability Theory:\n\nFundamentals of probability including probability spaces, random variables, and probability distributions.\nProbability rules like Bayes’ theorem and the law of total probability.\nBasic concepts of statistics including expected value, variance, and probability distributions.\n\nLinear Algebra:\n\nVector spaces, subspaces, and linear transformations.\nMatrix operations including addition, multiplication, and inverses.\nEigenvalues and eigenvectors, diagonalization, and applications such as solving systems of linear equations.\n\nData Science 1:\n\nIntroduction to R programming language and RStudio environment for data analysis.\nPrinciples of data tidying and manipulation using tools like the tidyverse package.\nBuilding personal data analysis projects from data acquisition and cleaning to visualization and interpretation.\n\nData Science 2:\n\nIn progress\n\nStatistics 1:\n\nDescriptive statistics including measures of central tendency and dispersion.\nProbability distributions and their properties.\nStatistical inference including hypothesis testing and confidence intervals."
+    "text": "Wisconsin’s susceptibility to gerrymandering arises from its identity as a swing state characterized by contested elections. The state’s distinct urban-rural disparity offers fertile ground for biased manipulation of electoral boundaries, prompting concerns regarding equal representation. To show these suspicions, we have leveraged data sourced from congressional district shape files for the 113th Congress, obtained from a UCLA website, and overlaid them onto the geographical borders of Wisconsin’s congressional districts. The table below provides a breakdown of the eight congressional districts alongside the respective percentages of Republican voters in each district.\n\n\n\n\n\ndistrict\nr_prop\nwinner\n\n\n\n\n5\n0.6676090\nRepublican\n\n\n1\n0.6499393\nRepublican\n\n\n8\n0.6268105\nRepublican\n\n\n7\n0.6170728\nRepublican\n\n\n6\n0.5719445\nRepublican\n\n\n2\n0.3119968\nDemocrat\n\n\n3\n0.0000000\nDemocrat\n\n\n4\n0.0000000\nDemocrat\n\n\n\n\n\nWe observe a trend where Republican districts secure victories by narrow margins, contrasting with Democratic districts that either lack Republican voters entirely or win their districts uncontested. This suggests a potential instance of gerrymandering, where the state is strategically divided, concentrating Democratic voters into a single area to account for only one electoral representative, while Republicans dominate the majority of other districts.\nThese plots show the political party of each winning district as well as their shape and size relative to the state as well as the other districts.\n\n\nWarning in st_point_on_surface.sfc(sf::st_zm(x)): st_point_on_surface may not\ngive correct results for longitude/latitude data"
   },
   {
-    "objectID": "Projects.html",
-    "href": "Projects.html",
-    "title": "Understanding Medications: Uncovering Side Effects",
+    "objectID": "Projectsland.html",
+    "href": "Projectsland.html",
+    "title": "Projects",
     "section": "",
-    "text": "This is Understanding Medications: Uncovering Side Effects.\n\nThe past year and a half I have been studying the essential skills in R such as Data visualization, tidying, transformation. Over this time I have practiced my coding skills using joins, factors, strings and other workflow basics. In the fall of 2023 Jackson Marsh and I conducted a study on the side effects of popular prescription drugs and the cautions of drug interactions."
-  },
-  {
-    "objectID": "wisconsin_distrticts.html",
-    "href": "wisconsin_distrticts.html",
-    "title": "Mapping",
-    "section": "",
-    "text": "wi &lt;- ggplot(data = wi_merged, aes(fill = winner)) +\n  geom_sf(alpha = 0.5) +\n  scale_fill_manual(\"Winner\", values = c(\"blue\", \"red\")) + \n  geom_sf_label(aes(label = DISTRICT), fill = \"white\") + \n  theme_void()\nwi \n\nWarning in st_point_on_surface.sfc(sf::st_zm(x)): st_point_on_surface may not\ngive correct results for longitude/latitude data"
-  },
-  {
-    "objectID": "us_states.html",
-    "href": "us_states.html",
-    "title": "Wisconsin",
-    "section": "",
-    "text": "My dataset comprises national obesity percentages categorized by state. The “Obesity” field attribute denotes the percentage of each state’s population classified as obese, based on the 2015 CDC BRFSS Survey. The dataset is structured as a tibble with five columns, including an object ID, “NAME,” “obesity,” “shape_area,” and “shape_length.” For this analysis, I focused solely on the obesity percentages. The dataset I’m joining with provides latitude and longitude coordinates for each state. To merge the obesity percentages with their corresponding latitude and longitude coordinates, I performed a right join. It’s necessary to convert the state names to lowercase using the str_to_lower function because they are capitalized in the “StateObesity” tibble but are lowercase in the “us_states” tibble, ensuring accurate matching between the datasets.\n\nStateObesity |&gt;\n  mutate(NAME = str_squish(str_to_lower(as.character(NAME)))) |&gt;\n  select(NAME, Obesity) |&gt;\n  right_join(us_states, by = c(\"NAME\" = \"region\")) |&gt;\n  \n  ggplot(mapping = aes(x = long, y = lat,\n                          group = group)) + \n  geom_polygon(aes(fill = Obesity), color = \"black\") +\n  labs(title = \"Obesity Rates by State\",\n       x = \"Longitude\",\n       y = \"Latitude\",\n       fill = \"Obesity Rate\")+\n  scale_fill_viridis_c() +\n  theme_classic()\n\n\n\n\nThe plot reveals distinct patterns in state obesity rates. Colorado stands out with the lowest average obesity rate, while Louisiana appears to have the highest. Along the West Coast, as well as in other regions, darker blue and purple hues dominate, indicating relatively lower obesity rates. Conversely, the southeastern part of the country is characterized by bright yellow shades, signifying a notably higher average obesity rate in those states."
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nUnderstanding Medications: Uncovering Side Effects\n\n\n\n\n\n\n\nMedicine\n\n\nData Science\n\n\n\n\nLance Nemecek and Jackson Marsh\n\n\n\n\n \n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -42,17 +28,24 @@
     "text": "Student of Mathematics and Data Science  MSCS Department @ St. Olaf College\n\n\nHigh school Degree | Mound Westonka High School\nIn progress: BA in Math with Stats and Data Science concentration 2026 | St. Olaf College\n\n\n\nServer | Woodhill Country Club\nMetal Fabricator | Industrial Louvers\nFood Expoditor | Maynards Restaurant"
   },
   {
-    "objectID": "Projectsland.html",
-    "href": "Projectsland.html",
-    "title": "Projects",
+    "objectID": "us_states.html",
+    "href": "us_states.html",
+    "title": "Geospatial Maping of Obesity In The United States",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nUnderstanding Medications: Uncovering Side Effects\n\n\n\n\n\n\n\nMedicine\n\n\nData Science\n\n\n\n\nLance Nemecek and Jackson Marsh\n\n\n\n\n \n\n\n\n\nNo matching items"
+    "text": "My dataset comprises national obesity percentages categorized by state. The “Obesity” field attribute denotes the percentage of each state’s population classified as obese, based on the 2015 CDC BRFSS Survey. For this analysis, I focused on obesity percentages. The dataset I’m joining with provides latitude and longitude coordinates for each state. To merge the obesity percentages with their corresponding latitude and longitude coordinates, I performed a right join. It’s necessary to convert the state names to lowercase using the str_to_lower function because they are capitalized in the “StateObesity” tibble but are lowercase in the “us_states” tibble, ensuring accurate matching between the datasets.\n\n\n\n\n\nThe plot reveals distinct patterns in state obesity rates. Colorado stands out with the lowest average obesity rate, while Louisiana appears to have the highest. Along the West Coast, as well as in other regions, darker blue and purple hues dominate, indicating relatively lower obesity rates. Conversely, the southeastern part of the country is characterized by bright yellow shades, signifying a notably higher average obesity rate in those states."
   },
   {
-    "objectID": "wisconsin_districts.html",
-    "href": "wisconsin_districts.html",
-    "title": "Congressional Districs of Wisconsin",
+    "objectID": "Projects.html",
+    "href": "Projects.html",
+    "title": "Understanding Medications: Uncovering Side Effects",
     "section": "",
-    "text": "Wisconsin’s susceptibility to gerrymandering arises from its identity as a swing state characterized by contested elections. The state’s distinct urban-rural disparity offers fertile ground for biased manipulation of electoral boundaries, prompting concerns regarding equal representation. To show these suspicions, we have leveraged data sourced from congressional district shape files for the 113th Congress, obtained from a UCLA website, and overlaid them onto the geographical borders of Wisconsin’s congressional districts. The table below provides a breakdown of the eight congressional districts alongside the respective percentages of Republican voters in each district.\n\n\n\n\n\ndistrict\nr_prop\nwinner\n\n\n\n\n5\n0.6676090\nRepublican\n\n\n1\n0.6499393\nRepublican\n\n\n8\n0.6268105\nRepublican\n\n\n7\n0.6170728\nRepublican\n\n\n6\n0.5719445\nRepublican\n\n\n2\n0.3119968\nDemocrat\n\n\n3\n0.0000000\nDemocrat\n\n\n4\n0.0000000\nDemocrat\n\n\n\n\n\nWe observe a trend where Republican districts secure victories by narrow margins, contrasting with Democratic districts that either lack Republican voters entirely or win their districts uncontested. This suggests a potential instance of gerrymandering, where the state is strategically divided, concentrating Democratic voters into a single area to account for only one electoral representative, while Republicans dominate the majority of other districts.\nThese plots show the political party of each winning district as well as their shape and size relative to the state as well as the other districts.\n\n\nWarning in st_point_on_surface.sfc(sf::st_zm(x)): st_point_on_surface may not\ngive correct results for longitude/latitude data"
+    "text": "This is Understanding Medications: Uncovering Side Effects.\n\nThe past year and a half I have been studying the essential skills in R such as Data visualization, tidying, transformation. Over this time I have practiced my coding skills using joins, factors, strings and other workflow basics. In the fall of 2023 Jackson Marsh and I conducted a study on the side effects of popular prescription drugs and the cautions of drug interactions."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "Courses at St. Olaf College",
+    "section": "",
+    "text": "I have taken the following MSCS courses during my time at St. Olaf College\n\nCalculus 2:\n\nTechniques of integration including substitution, integration by parts, and partial fractions.\nApplications of integration such as finding areas, volumes, and arc lengths.\nSequences and series including convergence tests and Taylor series.\n\nCalculus 3:\n\nMultivariable calculus including partial derivatives, multiple integrals, and line integrals.\nVector calculus concepts like gradients, divergence, and curl.\nApplications such as optimization problems and parametric surfaces.\n\nProbability Theory:\n\nFundamentals of probability including probability spaces, random variables, and probability distributions.\nProbability rules like Bayes’ theorem and the law of total probability.\nBasic concepts of statistics including expected value, variance, and probability distributions.\n\nLinear Algebra:\n\nVector spaces, subspaces, and linear transformations.\nMatrix operations including addition, multiplication, and inverses.\nEigenvalues and eigenvectors, diagonalization, and applications such as solving systems of linear equations.\n\nData Science 1:\n\nIntroduction to R programming language and RStudio environment for data analysis.\nPrinciples of data tidying and manipulation using tools like the tidyverse package.\nBuilding personal data analysis projects from data acquisition and cleaning to visualization and interpretation.\n\nData Science 2:\n\nIn progress\n\nStatistics 1:\n\nDescriptive statistics including measures of central tendency and dispersion.\nProbability distributions and their properties.\nStatistical inference including hypothesis testing and confidence intervals."
   }
 ]
