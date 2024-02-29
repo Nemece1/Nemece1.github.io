@@ -3,7 +3,7 @@ title: "Projects"
 listing:
   contents: Projects.qmd
   sort: "title desc"
-  type: grid
+  type: default
   image-height: 400px
   categories: true
   sort-ui: true

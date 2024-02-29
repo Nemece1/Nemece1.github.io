@@ -14,13 +14,13 @@ about:
 ::: {#intro-heading}
 ## Lance Nemecek
 
-Student of Mathematics Data Science <br> [MSCS Department](https://wp.stolaf.edu/mscs/) \@ [St. Olaf College](https://wp.stolaf.edu/)
+Student of Mathematics and Data Science <br> [MSCS Department](https://wp.stolaf.edu/mscs/) \@ [St. Olaf College](https://wp.stolaf.edu/)
 
 ### Education
 
 High school Degree \| Mound Westonka High School
 
-BA in Math with Statistics concentration<br> 2026 \| St. Olaf College
+In progress: BA in Math with Stats and Data Science concentration<br> 2026 \| St. Olaf College
 
 ### Work experience
 
