@@ -1,0 +1,91 @@
+---
+title: "R Tip Of The Day"
+author: "Lance Nemecek"
+date: "2024-03-10"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+install.packages("fuzzyjoin")
+install_github("trinker/qdapDictionaries")
+install_github("trinker/qdapRegex")
+install_github("trinker/qdapTools")
+install_github("trinker/qdap")
+```
+
+
+```{r}
+library(dplyr)
+library(fuzzyjoin)
+library(qdapDictionaries)
+library(devtools)
+words <- tbl_df(DICTIONARY)
+data(misspellings)
+```
+
+```{r}
+sub_misspellings <- misspellings |>
+  select(misspelling)|>
+  sample_n(1000)
+sub_misspellings
+```
+
+```{r}
+joined <- sub_misspellings |>
+  stringdist_inner_join(words, by = c(misspelling = "word"), max_dist = 1)
+joined
+```
+
+```{r}
+words
+```
+
+```{r}
+test_sub_misspellings <- misspellings |>
+  sample_n(1000)
+test_sub_misspellings
+```
+
+```{r}
+joined1 <- test_sub_misspellings |>
+  stringdist_inner_join(words, by = c(misspelling = "word"), max_dist = 1)
+joined1
+```
+
+```{r}
+joined1 |>
+  count(misspelling, correct)
+```
+
+```{r}
+which_correct <- joined1|>
+  group_by(misspelling, correct) |>
+  summarize(guesses = n(), one_correct = any(correct == word))
+
+which_correct
+```
+
+```{r}
+mean(which_correct$one_correct)
+```
+
+```{r}
+left_joined <- sub_misspellings %>%
+  stringdist_left_join(words, by = c(misspelling = "word"), max_dist = 1)
+
+left_joined
+```
+
+```{r}
+left_joined %>%
+  filter(is.na(word))
+```
+
+
+
+
+
+
+
