@@ -16,6 +16,8 @@ website:
         menu: 
           - us_states.qmd
           - wisconsin_districts.qmd
+      - file: BirthdayParadox.qmd
+        text: The Birthday Paradox
 
 page-footer:
     left: |

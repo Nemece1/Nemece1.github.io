@@ -14,7 +14,6 @@ library(fec16)
 library(sf)
 ```
 
-
 ```{r, include=FALSE}
 print(results_house, width = Inf)
 results_house |>
@@ -48,7 +47,7 @@ wi_results |>
 library(kableExtra)
 ```
 
-Wisconsin's susceptibility to gerrymandering arises from its identity as a swing state characterized by contested elections. The state's distinct urban-rural disparity offers fertile ground for biased manipulation of electoral boundaries, prompting concerns regarding equal representation. To show these suspicions, we have leveraged data sourced from congressional district shape files for the 113th Congress, obtained from a UCLA website, and overlaid them onto the geographical borders of Wisconsin's congressional districts. The  table below provides a breakdown of the eight congressional districts alongside the respective percentages of Republican voters in each district.
+Wisconsin's susceptibility to gerrymandering arises from its identity as a swing state characterized by contested elections. The state's distinct urban-rural disparity offers fertile ground for biased manipulation of electoral boundaries, prompting concerns regarding equal representation. To show these suspicions, we have leveraged data sourced from congressional district shape files for the 113th Congress, obtained from a UCLA website, and overlaid them onto the geographical borders of Wisconsin's congressional districts. The table below provides a breakdown of the eight congressional districts alongside the respective percentages of Republican voters in each district.
 
 ```{r, echo=FALSE}
 # distribution of total number of votes is narrow by design
@@ -61,7 +60,7 @@ wi_results |>
 
 We observe a trend where Republican districts secure victories by narrow margins, contrasting with Democratic districts that either lack Republican voters entirely or win their districts uncontested. This suggests a potential instance of gerrymandering, where the state is strategically divided, concentrating Democratic voters into a single area to account for only one electoral representative, while Republicans dominate the majority of other districts.
 
-These plots show the political party of each winning district as well as their shape and size relative to the state as well as the other districts. 
+These plots show the political party of each winning district as well as their shape and size relative to the state as well as the other districts.
 
 ```{r, include =FALSE}
 # Download congressional district shapefiles for the 113th Congress from a UCLA website (don't sweat the details too much)
@@ -102,7 +101,6 @@ head(wi_merged, width = Inf)
 #   part of sf package
 ```
 
-
 ```{r, echo = FALSE}
 wi <- ggplot(data = wi_merged, aes(fill = winner)) +
   geom_sf(alpha = 0.5) +
@@ -111,7 +109,6 @@ wi <- ggplot(data = wi_merged, aes(fill = winner)) +
   theme_void()
 wi 
 ```
-
 
 ```{r, echo = FALSE}
 library(leaflet)
@@ -127,5 +124,3 @@ leaflet_wi <- leaflet(wi_merged) |>
   setView(lng = -90, lat = 45, zoom = 6.5)
 leaflet_wi
 ```
-
-
