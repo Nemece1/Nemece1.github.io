@@ -1,0 +1,180 @@
+---
+title: "Strings And The New York Times"
+author: "Lance Nemecek"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+library(RTextTools)  
+library(tidyverse)
+library(lubridate)
+library(statebins)
+```
+
+```{r}
+data(NYTimes)
+as_tibble(NYTimes)
+```
+
+For this project, I've decided to utilize the NYTimes dataset to craft my narrative by analyzing textual data and addressing pertinent inquiries.
+
+## Presidents
+
+```{r}
+NYTpresidents <- NYTimes |>
+  mutate(has_bush = str_detect(Title, "[Bb][Uu][Ss][Hh]"),
+         has_clinton = str_detect(Title, "[Cc][Ll][Ii][Nn][Tt][Oo][Nn]"))
+  
+  
+NYTpresidentssummary <- NYTpresidents |>
+  summarise(Bush = sum(has_bush),
+            Clinton = sum(has_clinton))
+
+PrisedentsPlotData <- pivot_longer(NYTpresidentssummary, cols = c(Bush, Clinton), 
+                                   names_to = "President", 
+                                   values_to = "Count")
+
+ggplot(PrisedentsPlotData, aes(x = President, y = Count, fill = President)) +
+  geom_bar(stat = "identity") +
+  labs(title = "NY Times Articles mentioning Presidents Bush and Clinton",
+       x = "President",
+       y = "Count") +
+  theme_minimal()
+```
+
+What the code does and how I did it:
+
+Bill Clinton and George Bush were the presidents from 1996 to 2006, which is the timeframe of the data. I created a new tibble called NYT_presidents, which will initially contain three columns: one with the original text from the "Title" column from the NY Times dataset, column "has_bush," which will have a value of true if the string "Bush" is in the title column and NA if it does not. The "has_clinton" column works in the same way. To ensure I captured all capitalizations of the last names, I used square brackets to capture the first letter of the presidents' last names.
+
+2)  NYT_presidents' summary creates new columns called "bush" and "clinton," which count the number of true values in the NYT presidents' data.
+
+3)  "Presidents_plot_data" is NYT_presidents but pivoted longer so it can be used for graphing.
+
+4)  The final product is a bar plot showing the count of the number of times the presidents were mentioned by The New York Times.
+
+My Story: This analysis of mentions of Presidents Bill Clinton and George Bush within The New York Times dataset holds importance. It provides a quantitative understanding of the media coverage surrounding these political figures during a pivotal period in American history. By tracking the frequency of mentions, researchers may insight into the prominence and public perception of each president over time.
+
+This analysis contributes to our understanding of media bias and agenda-setting. The frequency of mentions may reflect the newspaper's editorial priorities and the broader societal discourse surrounding these presidents' administrations. Understanding how media coverage shapes public perception is crucial for evaluating the democratic process and the role of the media in shaping political narratives.
+
+## Money
+
+```{r}
+NYTmoney <- NYTimes |>
+  select(Title) |>
+  filter(str_detect(Title, "\\$"))
+```
+
+```{r}
+NYTthousand <- NYTmoney |>
+  mutate(thousands = as.numeric(gsub(",", "", str_extract(Title, "\\d{1,3},\\d{3}"))))
+```
+
+```{r}
+NYTmillion <- NYTmoney |>
+  mutate(millionsnumber = str_extract(Title, "[Mm][Ii][Ll][Ll][Ii][Oo][Nn]")) |>
+  mutate(millions = ifelse(!is.na(millionsnumber), as.numeric(str_extract(Title, "\\d+\\.?\\d*")), NA)) |>
+  select(Title, millions)
+```
+
+```{r}
+NYTbillion <- NYTmoney |>
+  mutate(billionsnumber = str_extract(Title, "[Bb][Ii][Ll][Ll][Ii][Oo][Nn]")) |>
+  mutate(billions = ifelse(!is.na(billionsnumber), as.numeric(str_extract(Title, "\\d+\\.?\\d*")), NA)) |>
+  select(Title, billions)
+```
+
+```{r}
+NYTtrillion <- NYTmoney |>
+  mutate(trillionsnumber = str_extract(Title, "[Tt]rillion")) |>
+  mutate(trillions = ifelse(!is.na(trillionsnumber), as.numeric(str_extract(Title, "\\d+\\.?\\d*")), NA)) |>
+  select(Title, trillions)
+```
+
+```{r}
+NYT_combined <- left_join(NYTmillion, NYTbillion, by = "Title")
+NYT_combined <- left_join(NYT_combined, NYTtrillion, by = "Title")
+NYT_combined <- left_join(NYT_combined, NYTthousand, by = "Title")
+
+print(NYT_combined)
+```
+
+*NYTmoney*: - This chunk selects rows from the dataset `NYTimes` where the title contains a dollar sign ('\$').
+
+*NYTthousand*: - This chunk takes the subset of data identified as containing monetary values in the thousands. - It extracts the numeric values from the titles that are formatted with thousands (with commas), converting them into numeric values.
+
+*NYTmillion*: - This chunk identifies rows with monetary values expressed in millions. - It extracts both the word 'million' and the numeric values associated with it, converting the numeric values into numeric format.
+
+*NYTbillion*: - Similar to the previous chunk, this one focuses on monetary values expressed in billions. - It extracts both the word 'billion' and the associated numeric values, converting them into numeric format.
+
+*NYTtrillion*: - Similar to the previous chunks, this one focuses on monetary values expressed in trillions. - It extracts both the word 'trillion' and the associated numeric values, converting them into numeric format.
+
+*NYT_combined*: - This chunk joins the dataframes created in the previous steps (`NYTmillion`, `NYTbillion`, `NYTtrillion`, `NYTthousand`) based on the common column 'Title'. - It combines all the extracted monetary values into a single dataframe, `NYT_combined`, where each row corresponds to a title from the New York Times dataset, with columns for millions, billions, trillions, and thousands as applicable.
+
+My Story:\
+The dataset from The New York Times provides insights into monetary discussions within its articles. Through filtering, specific monetary values, spanning thousands to trillions, are extracted, representing diverse economic narratives such as corporate deals, budget allocations, and economic forecasts. These figures offer valuable context, highlighting trends and developments across sectors.
+
+As the analysis progresses, the dataset combines these monetary categories, offering a comprehensive view of financial discussions over time. This merging process enables a nuanced understanding of hwo common and the distribution of monetary references within The New York Times articles.
+
+This exploration of monetary mentions serves as a valuable resource for researchers, journalists, and policymakers, offering a quantifiable look on economic discourse. The easiness of tracking financial trends and provides insight into the narratives shaping public perception and policy decisions.
+
+## United States
+
+```{r}
+states <- as.tibble(state.name)
+states <- rename(states, state_name = value)
+```
+
+```{r}
+extract_state <- function(Title) {
+  state_match <- str_extract(Title, paste(str_to_lower(state.name), collapse = "|"))
+  if (is.na(state_match)) {
+    return(NA)
+  } else {
+    return(state_match)
+  }
+}
+
+NYTimes$Title <- str_to_lower(NYTimes$Title)
+
+NYTstates <- tibble(
+  Title = NYTimes$Title,
+  State = sapply(NYTimes$Title, extract_state))
+
+NYTstates <- NYTstates |>
+  filter(!is.na(State))
+
+print(NYTstates)
+```
+
+```{r}
+# Plotting the data
+ggplot(NYTstates, aes(x = State, color = State)) +
+  geom_bar(show.legend = FALSE) +
+  labs(
+    title = "Number of Articles by State",
+    x = "State",
+    y = "Number of Articles"
+  ) +
+  theme_minimal()
+```
+
+*Creating a tibble of state names*:\
+- The first chunk initializes a tibble named "states" containing the names of the states in the United States.\
+- It then renames the column containing state names to "state_name".
+
+*Defining a function to extract state names from article titles*:\
+- The second chunk defines a function called "extract_state", which takes a title as input.\
+- Within the function, it searches for state names in the title using lowercase versions of state names.\
+- If a state name is found, it returns the matched state, otherwise, it returns NA.
+
+*Applying the function to the NYTimes dataset*:\
+- The NYTimes dataset's titles are converted to lowercase.\
+- A new tibble named "NYTstates" is created, containing the titles and the corresponding state names extracted using the "extract_state" function.\
+- Rows with NA values in the "State" column are filtered out.
+
+*Plotting the data*:\
+- Finally, the code generates a bar plot using ggplot, depicting the number of articles by state.\
+My Story: This code offers an oppourunity for exploring geographic trends in media through The New York Times. By extracting mentions of U.S. states from article titles, I provided insight into which regions garner the most attention within the NYT. This information could be useful for journalists, helping them identify areas of interest or underserved regions warranting more coverage.
+
+Researchers could also use this data to analyze how media attention correlates with various factors such as population density, political significance, or socioeconomic status across different states. Politicians and policymakers may also find utility in understanding which states receive the most media coverage and tailoring their messaging or policies accordingly.
