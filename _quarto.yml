@@ -18,6 +18,8 @@ website:
           - wisconsin_districts.qmd
       - file: BirthdayParadox.qmd
         text: The Birthday Paradox
+      - file: StringsProject.qmd
+        text: Strings and stories
 
 page-footer:
     left: |
