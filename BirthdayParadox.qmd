@@ -10,7 +10,9 @@ editor_options:
 ```{r, include = FALSE}
 library(tidyverse)
 ```
+
 # Background
+
 The Birthday Problem The birthday paradox, often termed as the birthday problem, is a perplexing phenomenon in probability theory that challenges common intuitions regarding the likelihood of shared birthdays within a group of individuals. Contrary to what one might expect, the paradox posits that in a relatively small gathering, the probability of at least two people sharing the same birthday is surprisingly high. This paradox arises due to the counterintuitive nature of combinatorial probabilities, where the focus shifts from the likelihood of a specific individual sharing a birthday with another to the broader scenario of any two individuals sharing a birthday within the group. Through combinatorial analysis and application of the principle of inclusion-exclusion, the birthday paradox unveils that as the number of individuals increases, the probability of shared birthdays escalates at a much faster rate than anticipated, reaching a point where it becomes highly probable, even in seemingly small groups. This paradox holds significant implications in various fields, including cryptography, networking, and epidemiology, where understanding the underlying principles of probability is crucial for accurate risk assessment and decision-making.
 
 What we know We know in advance that the answer should be 23 birthdays should give us a 50% probability that two of the people in our sample will have the same birthday. We wrote this is code by taking a sample of 1 though 366 represeting the days of the year, and then taking a random sample of 23 numbers. We must incluce replace = TRUE or else R will give us distinct values.
@@ -20,6 +22,7 @@ birthdays <- sample(1:366, 23, replace = TRUE)
 ```
 
 # Making Dataset
+
 We make a dataset from our function so we can work with the same data for a little bit while doing out statistical analysis. The duplicated function is helpful in this case as it can find when two numbers in the same output set are the same. It will return a list of trues and falses. If two numbers are the same, the function will return a false for the first time that number appeasers but will return TRUE for the second time that number appears.
 
 Boolean vales in R are handy because they are read as either a 1 or a zero. That means we can use the max function to see if there was a match. If the function returns a 0 then there were no matching birthdays and if it retuns a 1 then there were matching birthdays.
